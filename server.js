@@ -47,7 +47,7 @@ let produtos = [
         categoria: "papelaria"
     },
     {
-        id: 6,
+        id: 7,
         nome: "Brinquedo para Gatos",
         preco: 100,
         categoria: "petshop"
