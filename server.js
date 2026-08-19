@@ -30,15 +30,27 @@ let produtos = [
     },
     {
         id: 4,
-        nome: "Monitor 24 Polegadas",
-        preco: 850,
-        categoria: "informatica"
+        nome: "Caderno de Desenho",
+        preco: 25,
+        categoria: "papelaria"
     },
     {
         id: 5,
         nome: "Caixa de Som",
         preco: 200,
         categoria: "eletronicos"
+    },
+    {
+        id: 6,
+        nome: "Papel A4",
+        preco: 50,
+        categoria: "papelaria"
+    },
+    {
+        id: 6,
+        nome: "Brinquedo para Gatos",
+        preco: 100,
+        categoria: "petshop"
     }
 ];
 
