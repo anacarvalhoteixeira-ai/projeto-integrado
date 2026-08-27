@@ -28,11 +28,11 @@ model Post {
 }
 
 model Produto {
-  id         Int      @id @default(autoincrement())
-  nome       String   @db.VarChar(100)
-  preco      Decimal  @db.Decimal(10, 2)
-  emEstoque  Boolean  @default(true)
-  criadoEm   DateTime @default(now())
+  id        Int      @id @default(autoincrement())
+  nome      String   @db.VarChar(100)
+  preco     Decimal  @db.Decimal(10, 2)
+  categoria String   @db.VarChar(50)
+  criadoEm  DateTime @default(now()) @map("criado_em")
 
   @@map("produtos")
 }
