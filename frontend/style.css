@@ -38,6 +38,42 @@ main {
     margin: 30px auto;
 }
 
+.cadastro-usuario {
+    border: 2px solid #2563eb;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    background: #f8fbff;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.15);
+}
+
+.cadastro-usuario h2 {
+    margin-top: 0;
+    color: #2563eb;
+}
+
+.cadastro-usuario p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cadastro-usuario button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cadastro-usuario button:hover {
+    background: #1d4ed8;
+}
+
+.area-produtos {
+    opacity: 0.45;
+    pointer-events: none;
+}
 
 section {
     background-color: white;

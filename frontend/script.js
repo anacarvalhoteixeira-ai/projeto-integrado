@@ -2,7 +2,7 @@ const API_URL = "http://localhost:3000";
 
 
 // ELEMENTOS DO HTML
-
+// produtos
 const btnListar =
     document.getElementById("btnListar");
 
@@ -21,8 +21,28 @@ const produtos =
 const mensagem =
     document.getElementById("mensagem");
 
+const areasProdutos =
+    document.querySelectorAll(".area-produtos");
 
-// LISTAR TODOS
+// usuarios
+const formUsuario =
+    document.getElementById("formUsuario");
+
+let usuarioCadastrado = false;
+
+
+// PRODUTOS
+function liberarSistema() {
+
+    usuarioCadastrado = true;
+
+    areasProdutos.forEach(area => {
+        area.style.opacity = "1";
+        area.style.pointerEvents = "auto";
+    });
+
+}
+
 async function listarProdutos() {
 
     try {
@@ -375,8 +395,6 @@ async function deletarProduto(id) {
 
 }
 
-
-
 // EVENTOS DOS BOTÕES
 btnListar.addEventListener(
     "click",
@@ -393,4 +411,88 @@ btnFiltrar.addEventListener(
 btnBuscar.addEventListener(
     "click",
     buscarPorId
+);
+
+
+// USUARIO
+formUsuario.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+        const novoUsuario = {
+
+            nome:
+                document.getElementById(
+                    "nomeUsuario"
+                ).value,
+
+            email:
+                document.getElementById(
+                    "emailUsuario"
+                ).value,
+
+            senha:
+                document.getElementById(
+                    "senhaUsuario"
+                ).value
+
+        };
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API_URL}/usuarios`,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(novoUsuario)
+
+                    }
+                );
+
+            const dados =
+                await resposta.json();
+
+            if (!resposta.ok) {
+
+                mensagem.textContent =
+                    dados.mensagem;
+
+                mensagem.className =
+                    "erro";
+
+                return;
+            }
+
+            liberarSistema()
+
+            mensagem.textContent =
+                `Usuário cadastrado! Status: ${resposta.status}`;
+
+            mensagem.className =
+                "sucesso";
+
+            formUsuario.reset();
+
+        } catch (erro) {
+
+            mensagem.textContent =
+                "Erro ao conectar com a API.";
+
+            mensagem.className =
+                "erro";
+
+        }
+
+    }
 );

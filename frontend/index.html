@@ -20,111 +20,150 @@
 
     <main>
 
-        <!-- LISTAR -->
-        <section>
+        <section class="cadastro-usuario">
 
-            <h2>Consultar Produtos</h2>
+            <h2>Cadastrar Usuário</h2>
 
-            <button id="btnListar">
-                Listar Todos
-            </button>
+            <p>Cadastre-se para começar a utilizar o sistema.</p>
 
-        </section>
-
-
-        <!-- FILTRAR -->
-        <section>
-
-            <h2>Filtrar por Categoria</h2>
-
-            <input
-                type="text"
-                id="categoria"
-                placeholder="Ex: informatica"
-            >
-
-            <button id="btnFiltrar">
-                Filtrar
-            </button>
-
-        </section>
-
-
-        <!-- BUSCAR ID -->
-        <section>
-
-            <h2>Buscar por ID</h2>
-
-            <input
-                type="number"
-                id="id"
-                placeholder="Ex: 1"
-            >
-
-            <button id="btnBuscar">
-                Buscar
-            </button>
-
-        </section>
-
-
-        <!-- CADASTRAR -->
-        <section>
-
-            <h2>Cadastrar Produto</h2>
-
-            <form id="formProduto">
+            <form id="formUsuario">
 
                 <input
                     type="text"
-                    id="nome"
-                    placeholder="Nome do produto"
+                    id="nomeUsuario"
+                    placeholder="Nome"
                     required
                 >
 
                 <input
-                    type="number"
-                    id="preco"
-                    placeholder="Preço"
+                    type="email"
+                    id="emailUsuario"
+                    placeholder="E-mail"
                     required
                 >
 
                 <input
-                    type="text"
-                    id="categoriaCadastro"
-                    placeholder="Categoria"
+                    type="password"
+                    id="senhaUsuario"
+                    placeholder="Senha"
                     required
                 >
 
                 <button type="submit">
-                    Cadastrar
+                    Cadastrar Usuário
                 </button>
 
             </form>
 
         </section>
+        <div class="area-produtos"> 
+            <!-- LISTAR -->
+            <section>
+
+                <h2>Consultar Produtos</h2>
+
+                <button id="btnListar">
+                    Listar Todos
+                </button>
+
+            </section>
 
 
-        <!-- MENSAGEM -->
+            <!-- FILTRAR -->
+            <section>
 
-        <div id="mensagem"></div>
+                <h2>Filtrar por Categoria</h2>
+
+                <input
+                    type="text"
+                    id="categoria"
+                    placeholder="Ex: informatica"
+                >
+
+                <button id="btnFiltrar">
+                    Filtrar
+                </button>
+
+            </section>
 
 
-        <!-- PRODUTOS -->
+            <!-- BUSCAR ID -->
+            <section>
 
-        <section>
+                <h2>Buscar por ID</h2>
 
-            <h2>Produtos</h2>
+                <input
+                    type="number"
+                    id="id"
+                    placeholder="Ex: 1"
+                >
 
-            <div id="produtos">
+                <button id="btnBuscar">
+                    Buscar
+                </button>
 
-                <p>
-                    Clique em "Listar Todos" para ver os produtos.
-                </p>
+            </section>
 
-            </div>
 
-        </section>
+            <!-- CADASTRAR -->
+            <section>
+
+                <h2>Cadastrar Produto</h2>
+
+                <form id="formProduto">
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Nome do produto"
+                        required
+                    >
+
+                    <input
+                        type="number"
+                        id="preco"
+                        placeholder="Preço"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="categoriaCadastro"
+                        placeholder="Categoria"
+                        required
+                    >
+
+                    <button type="submit">
+                        Cadastrar
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- MENSAGEM -->
+
+            <div id="mensagem"></div>
+
+
+            <!-- PRODUTOS -->
+
+            <section>
+
+                <h2>Produtos</h2>
+
+                <div id="produtos">
+
+                    <p>
+                        Clique em "Listar Todos" para ver os produtos.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
 
     </main>
 

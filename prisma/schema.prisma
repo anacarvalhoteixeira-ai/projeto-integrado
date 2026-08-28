@@ -15,16 +15,7 @@ model Usuario {
   id       Int      @id @default(autoincrement())
   nome     String
   email    String   @unique
-  posts    Post[]
-  criadoEm DateTime @default(now())
-}
-
-model Post {
-  id        Int     @id @default(autoincrement())
-  titulo    String
-  conteudo  String?
-  usuarioId Int
-  usuario   Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  senha    String
 }
 
 model Produto {

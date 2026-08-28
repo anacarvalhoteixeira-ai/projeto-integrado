@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const produtoRoutes = require("./src/routes/produtoRoutes");
+const usuarioRoutes = require("./src/routes/usuarioRoutes")
+
 const app = express();
 const PORTA = 3000;
 
@@ -16,6 +18,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/produtos", produtoRoutes);
+app.use("/usuarios", usuarioRoutes);
 
 // Iniciar servidor
 app.listen(PORTA, () => {
