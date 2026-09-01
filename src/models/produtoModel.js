@@ -21,6 +21,11 @@ module.exports = {
         });
     },
 
+    atualizar: (id,dados) => prisma.produto.update({
+        where: {id},
+        data: dados
+    }),
+
     criar: (dados) => {
         return prisma.produto.create({
             data: dados

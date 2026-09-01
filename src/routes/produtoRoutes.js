@@ -10,6 +10,8 @@ router.get("/filtrar", produtoController.filtrarProdutos);
 
 router.get("/:id", produtoController.buscarProduto);
 
+router.put("/:id", produtoController.atualizarProduto);
+
 router.post("/", produtoController.cadastrarProduto);
 
 router.delete("/:id", produtoController.excluirProduto);

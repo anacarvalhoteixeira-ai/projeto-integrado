@@ -40,6 +40,12 @@ const buscarProduto = async (req, res) => {
     try {
         const id = Number(req.params.id);
 
+        if (isNaN(id)) {
+            return res.status(400).json({
+                mensagem: "ID inválido"
+            });
+        }
+
         const produto = await produtoModel.buscarPorId(id);
 
         if (!produto) {
@@ -57,6 +63,49 @@ const buscarProduto = async (req, res) => {
         });
     }
 };
+
+const atualizarProduto = async (req, res) => {
+    try {
+        const id = Number(req.params.id);
+
+        if (isNaN(id)) {
+            return res.status(400).json({
+                mensagem: "ID inválido"
+            });
+        }
+
+        const produtoExistente = await produtoModel.buscarPorId(id); 
+
+        if(!produtoExistente) {
+            return res.status(404).json({
+                mensagem: "Produto não encontrado"
+            })
+        } 
+
+           const { nome, preco, categoria } = req.body;
+
+        if (!nome || preco === undefined || !categoria) {
+            return res.status(400).json({
+                mensagem: "Nome, preço e categoria são obrigatórios"
+            });
+        }
+
+        const produtoAtualizado = await produtoModel.atualizar(id, {
+            nome,
+            preco,
+            categoria
+        });
+
+        return res.status(200).json(produtoAtualizado);
+
+    } catch (erro) {
+        console.error(erro);
+
+        return res.status(500).json({
+            mensagem: "Erro interno do servidor"
+        });
+    }
+}
 
 const cadastrarProduto = async (req, res) => {
     try {
@@ -88,32 +137,39 @@ const excluirProduto = async (req, res) => {
     try {
         const id = Number(req.params.id);
 
-        const produto = await produtoModel.buscarPorId(id);
+         if (isNaN(id)) {
+            return res.status(400).json({
+                erro: "ID inválido"
+            });
+        }
+        
+        const produtoExistente = await produtoModel.buscarPorId(id);
 
-        if (!produto) {
+        if (!produtoExistente) {
             return res.status(404).json({
-                mensagem: "Produto não encontrado."
+                erro: "Produto não encontrado"
             });
         }
 
-        const produtoRemovido = await produtoModel.deletar(id);
+        await produtoModel.deletar(id);
 
-        res.status(200).json({
-            mensagem: "Produto removido com sucesso.",
-            produto: produtoRemovido
+        return res.status(200).json({
+            mensagem: "Produto excluído com sucesso"
         });
+
     } catch (erro) {
         console.error(erro);
 
-        res.status(500).json({
-            mensagem: "Erro ao excluir produto."
+        return res.status(500).json({
+            erro: "Erro interno do servidor"
         });
     }
-};
+}
 
 module.exports = {
     listarProdutos,
     filtrarProdutos,
+    atualizarProduto,
     buscarProduto,
     cadastrarProduto,
     excluirProduto
